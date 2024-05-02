@@ -1,0 +1,244 @@
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw1 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10] 
+  cidrBlock: 10.18.1.0/28 
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw2 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10]
+  cidrBlock: 10.18.1.16/28
+  provider: nw2.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw3 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10]
+  cidrBlock: 10.18.1.32/28
+  provider: nw3.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw4 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10]
+  cidrBlock: 10.18.1.48/28
+  provider: nw4.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw5 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10] 
+  cidrBlock: 10.18.1.64/28
+  provider: nw5.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw6 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10]
+  cidrBlock: 10.18.1.80/28
+  provider: nw6.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw7 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10] 
+  cidrBlock: 10.18.1.96/28
+  provider: nw7.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw8 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10]
+  cidrBlock: 10.18.1.112/28
+  provider: nw8.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw9 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10] 
+  cidrBlock: 10.18.1.128/28
+  provider: nw9.default.ovn
+---
+apiVersion: kubeovn.io/v1 
+kind: Subnet 
+metadata: 
+  name: nw10 
+spec: 
+  protocol: IPv4 
+  default: false 
+  private: true 
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10] 
+  cidrBlock: 10.18.1.144/28
+  provider: nw10.default.ovn
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw2 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw2.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw3 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw3.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw4 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw4.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw5 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw5.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw6 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw6.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw7 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw7.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw8 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw8.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw9 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw9.default.ovn" 
+    }
+---
+apiVersion: "k8s.cni.cncf.io/v1" 
+kind: NetworkAttachmentDefinition 
+metadata: 
+  name: nw10 
+  namespace: default 
+spec: 
+  config: | 
+    { 
+      "cniVersion": "0.3.0", 
+      "type": "kube-ovn", 
+      "server_socket": "/run/openvswitch/kube-ovn-daemon.sock", 
+      "provider": "nw10.default.ovn" 
+    }

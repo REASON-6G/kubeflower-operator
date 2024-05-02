@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: my-python-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: python-container
+        image: python:3.9  # Use your desired Python image
+        command: ["python3"]
+      restartPolicy: Never

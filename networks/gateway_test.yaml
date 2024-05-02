@@ -1,0 +1,18 @@
+apiVersion: kubeovn.io/v1
+kind: Subnet
+metadata:
+  name: nw1
+spec:
+  protocol: IPv4
+  default: false
+  private: true
+  namespaces: [ns1, ns2, ns3, ns4, ns5, ns6, ns7, ns8, ns9, ns10]
+  cidrBlock: 10.18.1.0/28
+  #gateway: 10.18.1.1
+  #gatewayType: centralized
+  #gatewayNode: "juan-1-mshed, juan-2-mshed-gpu"
+  natOutgoing: true
+  natOutgoingPolicyRules:
+    - action: nat
+      match:
+        srcIPs: 10.18.1.0/28

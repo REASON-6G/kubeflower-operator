@@ -1,0 +1,32 @@
+apiVersion: v1 
+kind: Pod 
+metadata: 
+  name: nw1-pod 
+  annotations: 
+    k8s.v1.cni.cncf.io/networks: default/nw2, default/nw3, default/nw4, default/nw5, default/nw6, default/nw7, default/nw8, default/nw9, default/nw10  # Activate multus 
+    ovn.kubernetes.io/logical_switch: nw1  # Default network 
+    ovn.kubernetes.io/ip_address: 10.18.1.3 
+    nw2.default.ovn.kubernetes.io/logical_switch: nw2  # Second network (yes, it is repetitive) 
+    nw2.default.ovn.kubernetes.io/ip_address: 10.18.1.21
+    nw3.default.ovn.kubernetes.io/logical_switch: nw3  # Second network (yes, it is repetitive) 
+    nw3.default.ovn.kubernetes.io/ip_address: 10.18.1.34
+    nw4.default.ovn.kubernetes.io/logical_switch: nw4  # Second network (yes, it is repetitive) 
+    nw4.default.ovn.kubernetes.io/ip_address: 10.18.1.50
+    nw5.default.ovn.kubernetes.io/logical_switch: nw5 # Second network (yes, it is repetitive)  
+    nw5.default.ovn.kubernetes.io/ip_address: 10.18.1.67
+    nw6.default.ovn.kubernetes.io/logical_switch: nw6 # Second network (yes, it is repetitive)  
+    nw6.default.ovn.kubernetes.io/ip_address: 10.18.1.83  
+    nw7.default.ovn.kubernetes.io/logical_switch: nw7 # Second network (yes, it is repetitive)  
+    nw7.default.ovn.kubernetes.io/ip_address: 10.18.1.99
+    nw8.default.ovn.kubernetes.io/logical_switch: nw8 # Second network (yes, it is repetitive)  
+    nw8.default.ovn.kubernetes.io/ip_address: 10.18.1.115  
+    nw9.default.ovn.kubernetes.io/logical_switch: nw9 # Second network (yes, it is repetitive)  
+    nw9.default.ovn.kubernetes.io/ip_address: 10.18.1.131  
+    nw10.default.ovn.kubernetes.io/logical_switch: nw10 # Second network (yes, it is repetitive)  
+    nw10.default.ovn.kubernetes.io/ip_address: 10.18.1.147       
+spec: 
+  containers: 
+    - name: nw1-container 
+      image: "alpine:3.17" 
+      command: ["ping"] 
+      args: ["8.8.8.8"]

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  nodeName: kube-master
+  containers:
+  - name: kubeflower
+    image: juanmarcelouob/kubeflower:cpu
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - name: my-volume
+      mountPath: /app/data/
+  volumes:
+  - name: my-volume
+    persistentVolumeClaim:
+      claimName: my-pvc1

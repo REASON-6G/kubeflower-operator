@@ -1,0 +1,19 @@
+apiVersion: flwr.dev/v1
+kind: FLDeployment
+metadata:
+  name: fl-deployment
+  finalizers:
+spec:
+  server:
+    imagePullPolicy: IfNotPresent
+    port: 8080
+    rounds: 10
+  client:
+    num_clients: 10
+    imagePullPolicy: IfNotPresent
+    isolation: True
+    port: 30051
+    dataset:
+      download: False
+    privacy:
+      budget: 0.2

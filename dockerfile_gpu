@@ -1,0 +1,10 @@
+FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime
+RUN apt-get update && apt-get install -y iputils-ping net-tools iproute2 traceroute nmap coreutils tcpdump iputils-tracepath
+WORKDIR /app
+#RUN conda install pip -y
+RUN python -m pip install --upgrade pip
+COPY ./requirements_gpu.txt .
+RUN pip install -r requirements_gpu.txt
+COPY ./src src
+RUN mkdir data
+CMD ["/bin/sh", "-c", "while sleep 1000; do :; done"]

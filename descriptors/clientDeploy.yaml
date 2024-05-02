@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flower-client
+  labels:
+    app: flower-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flower-client 
+  template:
+    metadata:
+      labels:
+        app: flower-client
+      annotations:  # Activate multus
+        ovn.kubernetes.io/logical_switch: nw1 
+    spec:
+      nodeName: kube-master
+      containers:
+      - name: kubeflower
+        image: juanmarcelouob/kubeflower:latest
+        imagePullPolicy: Always
+        command: ["/bin/sh", "-c"]
+        args: ["python ./src/client.py --server 'fl-deployment-service-server' --port '30051' --download True"]
+        ports:
+        - containerPort: 30051
