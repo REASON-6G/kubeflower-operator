@@ -3,6 +3,8 @@
 ## What is KubeFlower?
 Kubeflower is a project for exploting the benefits of cloud-native and container-based technologies for the development, deployment and workload management of Federated Learning (FL) pipelines. We use the open-source framework [Flower](https://flower.dev/) for the FL workload control. Flower has been widely adopted in industry and academy. In order increase computation elasticity and efficiency when deploying FL, we use the container orchestration system [Kubernetes](https://kubernetes.io/) (K8s). We use different concepts as FL server, FL clients, K8s clusters, K8s operators, K8s CNIs, K8s CRDs, K8s deployments, K8s pods, and K8s services. If you are not familiar with this terminology, please watch the following resources: [Federated Learning](https://youtu.be/nBGQQHPkyNY), [Kubernetes](https://youtu.be/s_o8dwzRlu4). The impleamentation in this repo makes reference to our FGCS paper ["kubeFlower: A privacy-preserving framework for Kubernetes-based federated learning in cloud-edge environments"](https://www.sciencedirect.com/science/article/pii/S0167739X24001134).
 
+![](figures/K8s_FL_architecture.png)
+
 ## Top-Level Features
 * Single and multi-node implementation.
 * High availability through clustering and distributed state management.
@@ -99,6 +101,18 @@ To deploy this architecture you need to:
 
 
 This is a simple implementation of container-based FL using Flower and K8s for orchestration. For further comments/discussions/ideas/projects, please contact the developers.  
+
+### Citation
+If you publish work that uses kubeFlower, please cite it as follows:
+```
+@article{parra2024kubeflower,
+  title={kubeFlower: A privacy-preserving framework for Kubernetes-based federated learning in cloud-edge environments},
+  author={Parra-Ullauri, Juan Marcelo and Madhukumar, Hari and Nicolaescu, Adrian-Cristian and Zhang, Xunzheng and Bravalheri, Anderson and Hussain, Rasheed and Vasilakos, Xenofon and Nejabati, Reza and Simeonidou, Dimitra},
+  journal={Future Generation Computer Systems},
+  year={2024},
+  publisher={Elsevier}
+}
+```
 
 ### TODO
 Some possible extensions:
