@@ -1,7 +1,7 @@
 # KubeFlower: Kubernetes-based Federated Learning
 
 ## What is KubeFlower?
-Kubeflower is a project for exploting the benefits of cloud-native and container-based technologies for the development, deployment and workload management of Federated Learning (FL) pipelines. We use the open-source framework [Flower](https://flower.dev/) for the FL workload control. Flower has been widely adopted in industry and academy. In order increase computation elasticity and efficiency when deploying FL, we use the container orchestration system [Kubernetes](https://kubernetes.io/) (K8s). We use different concepts as FL server, FL clients, K8s clusters, K8s operators, K8s CNIs, K8s CRDs, K8s deployments, K8s pods, and K8s services. If you are not familiar with this terminology, please watch the following resources: [Federated Learning](https://youtu.be/nBGQQHPkyNY), [Kubernetes](https://youtu.be/s_o8dwzRlu4). The impleamentation in this repo makes reference to our FGCS paper ["kubeFlower: A privacy-preserving framework for Kubernetes-based federated learning in cloud-edge environments"](https://www.sciencedirect.com/science/article/pii/S0167739X24001134).
+Kubeflower is a project for exploring the benefits of cloud-native and container-based technologies for the development, deployment and workload management of Federated Learning (FL) pipelines. We use the open-source framework [Flower](https://flower.dev/) for the FL workload control. Flower has been widely adopted in industry and academia. In order to increase computation elasticity and efficiency when deploying FL, we use the container orchestration system [Kubernetes](https://kubernetes.io/) (K8s). We use different concepts such as FL server, FL clients, K8s clusters, K8s operators, K8s CNIs, K8s CRDs, K8s deployments, K8s pods, and K8s services. If you are not familiar with this terminology, please watch the following resources: [Federated Learning](https://youtu.be/nBGQQHPkyNY), [Kubernetes](https://youtu.be/s_o8dwzRlu4). The implementation in this repo makes reference to our FGCS paper ["kubeFlower: A privacy-preserving framework for Kubernetes-based federated learning in cloud-edge environments"](https://www.sciencedirect.com/science/article/pii/S0167739X24001134).
 
 ![](figures/K8s_FL_architecture.png)
 
@@ -14,7 +14,7 @@ Kubeflower is a project for exploting the benefits of cloud-native and container
 * Scalability through clustering of network device control.
 * CLI for debugging.
 * Applicable to real-world scenarios.
-* Extandable.
+* Extendable.
 * Cross-platform (Linux, macOS, Windows).
 
 ## Getting started
@@ -49,9 +49,9 @@ For this proof-of-concept, a K8s cluster is deployed locally using minikube. The
     cd kubeFlower-Operator/
  ```
  ### Step-by-step deployment
- Now you are ready for deploying the FL pipeline using K8s. We will be using K8s deployments to create K8s pods that will use a K8s service for communitacions. Each pod represents a FL actor with a main pod that will act as a FL server. The proposed architecture is depicted in the figure. 
+ Now you are ready to deploy the FL pipeline using K8s. We will be using K8s deployments to create K8s pods that will use a K8s service for communications. Each pod represents an FL actor with a main pod that will act as an FL server. The proposed architecture is depicted in the figure. 
 
- The docker image `kubeflower` is used to deploy the containers with the Flower's pipeline and other dependencies. The image used for this PoC is publicy available at Docker Hub [kubeflower](https://hub.docker.com/r/juanmarcelouob/kubeflower). These containers are deployed in pods. The FL server Pod exposes port 8080 for the gRPC communication implemented by Flower. 
+ The docker image `kubeflower` is used to deploy the containers with the Flower's pipeline and other dependencies. The image used for this PoC is publicly available at Docker Hub [kubeflower](https://hub.docker.com/r/juanmarcelouob/kubeflower). These containers are deployed in pods. The FL server Pod exposes port 8080 for the gRPC communication implemented by Flower. 
 For the FL setup, we use the FL PyTorch implementation of Flower. This simple example can be found [here](https://flower.dev/docs/quickstart-pytorch.html). 
 
 To deploy this architecture you need to:
@@ -60,7 +60,7 @@ To deploy this architecture you need to:
     ```bash
     kubectl apply -f operator/flwr-crd.yaml
     ```
-2. Check the succeful installation of the CRD.
+2. Check the successful installation of the CRD.
    ```bash
    kubectl get crd | grep fldeployments
    ```
@@ -70,9 +70,11 @@ To deploy this architecture you need to:
    ```
    kopf run operator/fl_operator.py 
    ``` 
-   You should see the following output: 
+   You should see the following output:
+   
    ![](figures/operator.png)
-5. Deploy the FL server and clients. You can do it individually or all in one go. The following example descriptor (`flwr-deploy.yaml`) deploys a FL server and 10 clients with network isolation and a privacy budget of 0.7:
+   
+6. Deploy the FL server and clients. You can do it individually or all in one go. The following example descriptor (`flwr-deploy.yaml`) deploys a FL server and 10 clients with network isolation and a privacy budget of 0.7:
    ```yaml
    apiVersion: flwr.dev/v1
    kind: FLDeployment
@@ -124,3 +126,6 @@ Some possible extensions:
 * Personalised DP 
 * Data reuse
 * Resource optimisation
+
+### Contact
+For more information contact the development team and the corresponding author Juan Marcelo Parra-Ullauri.
