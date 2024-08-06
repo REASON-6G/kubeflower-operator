@@ -21,16 +21,17 @@ Kubeflower is a project for exploring the benefits of cloud-native and container
 
 ### Dependencies
 
-For this proof-of-concept, a K8s cluster is deployed locally using minikube. The following packages are required and should be installed beforehand:
+For this proof-of-concept, a K8s cluster is deployed. The following packages are required and should be installed beforehand:
 * [git](https://git-scm.com/)
 * [docker](https://www.docker.com/)
 * [kubernetes](https://kubernetes.io/docs/setup/production-environment/tools/)
 * [kube-ovn](https://kubeovn.github.io/docs/v1.12.x/en/start/one-step-install/)
 * [python3](https://www.python.org/downloads/)
 * [multus-cni](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md)
+* [kubernetes operator framework (kopf)](https://github.com/nolar/kopf/tree/main)
 
 ### Requirements
-* A Kubernetes cluester: Single node (e.g., with [minikube](https://minikube.sigs.k8s.io/docs/start/)), or multi node with standard kubernetes.
+* A Kubernetes cluster: Single node (e.g., with [kind](https://kind.sigs.k8s.io/)), or multi-node with standard Kubernetes.
 * KubeOVN as CNI: Don't use the standard network CNIs (i.e. Calico or Flanel). Please check [networks](networks/).
 * If using network isolation, the clients' datasets need to be located (downloaded) on the relevant nodes as the clients will be isolated from the internet. 
 
@@ -39,7 +40,7 @@ For this proof-of-concept, a K8s cluster is deployed locally using minikube. The
  ```bash
     git clone git@github.com:hpn-bristol/KubeFlower.git
  ```
- 2. Install python libraries Kopf and Kubernetes python client. You can use environment managemers if desired.
+ 2. Install Python libraries Kopf and Kubernetes python client. You can use environment managers if desired.
  ```bash
     pip install kopf
     pip install kubernetes  
