@@ -1,5 +1,7 @@
 # KubeFlower: Kubernetes-based Federated Learning
 
+*** Work on top of our previous repo [KubeFlower](https://github.com/hpn-bristol/kubeFlower) ***
+
 ## What is KubeFlower?
 Kubeflower is a project for exploring the benefits of cloud-native and container-based technologies for the development, deployment and workload management of Federated Learning (FL) pipelines. We use the open-source framework [Flower](https://flower.dev/) for the FL workload control. Flower has been widely adopted in industry and academia. In order to increase computation elasticity and efficiency when deploying FL, we use the container orchestration system [Kubernetes](https://kubernetes.io/) (K8s). We use different concepts such as FL server, FL clients, K8s clusters, K8s operators, K8s CNIs, K8s CRDs, K8s deployments, K8s pods, and K8s services. If you are not familiar with this terminology, please watch the following resources: [Federated Learning](https://youtu.be/nBGQQHPkyNY), [Kubernetes](https://youtu.be/s_o8dwzRlu4). The implementation in this repo makes reference to our FGCS paper ["kubeFlower: A privacy-preserving framework for Kubernetes-based federated learning in cloud-edge environments"](https://www.sciencedirect.com/science/article/pii/S0167739X24001134).
 
